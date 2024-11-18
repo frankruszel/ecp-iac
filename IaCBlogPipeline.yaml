@@ -4,7 +4,7 @@ Parameters:
     AllowedPattern: ".+"
     Type: String
     Description: "Github branch name e.g. development"
-    Default: "main"
+    Default: "master"
   GithubOwner:
     AllowedPattern: ".+"
     Type: String
@@ -188,3 +188,9 @@ Resources:
         Type: S3
         Location:
           Ref: ArtifactStoreS3Location
+Outputs:
+  GithubConnection:
+    Description: GithubConnection resource
+    Value: !Ref GithubConnection
+    Export:
+      Name: GithubConnection

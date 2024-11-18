@@ -46,7 +46,7 @@ Resources:
                 Action:
                   - codestar-connections:UseConnection
                 Resource:
-                  - !Ref GithubConnection
+                  - !ImportValue GithubConnection
               -
                 Effect: "Allow"
                 Action:
