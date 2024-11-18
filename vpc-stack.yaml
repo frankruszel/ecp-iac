@@ -29,7 +29,14 @@ Parameters:
     Type: String
     Description: Name of the stack which created SNS topic and IAM roles
     Default: "IaaCIAMCFT"  
-
+  BastionHostAMIid:
+    Type: String
+    Description: AMI ID to be used for Bastion Host
+    Default: ami-009d6802948d06e52
+  BastionHostSSHKey:
+    Type: String
+    Description: SSH key to be used to login to Bastion Host
+    Default: MyKeyPairIaC
 
   TagPrefix:
     Type: String
