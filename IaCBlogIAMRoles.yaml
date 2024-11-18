@@ -44,14 +44,9 @@ Resources:
               -
                 Effect: "Allow"
                 Action:
-                  - "codecommit:ListBranches"
-                  - "codecommit:ListRepositories"
-                  - "codecommit:BatchGetRepositories"
-                  - "codecommit:Get*"
-                  - "codecommit:GitPull"
-                  - "codecommit:UploadArchive"
+                  - codestar-connections:UseConnection
                 Resource:
-                  - "*"
+                  - !Ref GithubConnection
               -
                 Effect: "Allow"
                 Action:

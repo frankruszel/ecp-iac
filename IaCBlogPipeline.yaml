@@ -1,5 +1,19 @@
 Description: IaCBlogPipeline
 Parameters:
+  GithubBranch:
+    AllowedPattern: ".+"
+    Type: String
+    Description: "Github branch name e.g. development"
+    Default: "main"
+  GithubOwner:
+    AllowedPattern: ".+"
+    Type: String
+    Description: "Github repo owner"
+  GithubRepo:
+    AllowedPattern: ".+"
+    Type: String
+    Description: "Github repo name"
+
   CFNTemplateRepoName:
     Type: String
     Description: Name of the repo which contains CFN template.
@@ -16,6 +30,11 @@ Parameters:
     Default: "IaCBlogSNSTopics"  
 
 Resources:
+  GithubConnection:
+    Type: AWS::CodeStarConnections::Connection
+    Properties:
+      ConnectionName: !Sub ${AWS::StackName}-GithubConnection
+      ProviderType: GitHub
   DeployPipeline:
     Type: "AWS::CodePipeline::Pipeline"
     Properties:
@@ -35,15 +54,15 @@ Resources:
               ActionTypeId:
                 Category: Source
                 Owner: AWS
-                Version: 1
-                Provider: CodeCommit
+                Version: "1"
+                Provider: CodeStarSourceConnection
               OutputArtifacts:
                 -
                   Name: CFNTemplateArtifact
               Configuration:
-                BranchName: master
-                RepositoryName:
-                  Ref: CFNTemplateRepoName
+                ConnectionArn: !Ref GithubConnection
+                FullRepositoryId: !Sub "${GithubOwner}/${GithubRepo}"
+                BranchName: !Ref GithubBranch
               RunOrder: 1
         -  
           Name: UAT
