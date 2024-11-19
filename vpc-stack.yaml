@@ -42,5 +42,8 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: Sub! '${Stage}-${TagPrefix}'
+          Value: !Sub 
+          - '${Stage}-${TagPrefix}'
+          - Stage: !Ref Stage
+          - TagPrefix: !Ref TagPrefix
   
