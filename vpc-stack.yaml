@@ -42,6 +42,6 @@ Resources:
       EnableDnsHostnames: true
       Tags:
         - Key: Name
-          Value: !Sub 
-          - '${Stage}'
-          - Stage: !Ref Stage
+          Value: 
+             Fn::Sub: '${Stage}-${TagPrefix}'
+  
