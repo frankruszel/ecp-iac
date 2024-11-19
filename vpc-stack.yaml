@@ -22,4 +22,15 @@ Resources:
         - Key: Name
           Value:
             Ref: TagPrefix
+  VPC2:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock:
+        Ref: VPC2CIDR
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value:
+            Ref: TagPrefix
   
