@@ -2,6 +2,7 @@
   "Parameters" : {
   "VPC1CIDR": "172.22.1.0/24",
   "VPC2CIDR": "172.22.2.0/24",
+  "VPC3CIDR": "172.22.2.0/24",
   "Stage": "Prod",
   "TagPrefix": "IaCBlog"
   }}
